@@ -1,1 +1,40 @@
-
+name: Kontrol
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */10 * * *'  #her 10 saatte bir kontrol edilip yazılır.
+jobs:
+  Guncelleme:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    permissions:
+      contents: write
+    steps:
+      - name: Depoyu Klonla
+        uses: actions/checkout@v4.2.2
+        
+      - name: Python 3.11.8 Yükle
+        uses: actions/setup-python@v5.3.0
+        with:
+          python-version: 3.11.8
+          
+      - name: Gereksinimleri Kur
+        run: |
+          python -m pip install --upgrade pip
+          pip install httpx parsel requests
+          
+      - name: kbl.py çalıştır
+        run: python kbl/kbl.py
+        
+      - name: Commit and push the M3U8 files
+        run: |
+           git config --global user.name "actions-user"
+           git config --global user.email "actions@github.com"
+          
+           git add kbl.m3u
+           git diff --staged --quiet || git commit -m "Kbl M3U Dosyası Güncellendi - $(date +'%Y-%m-%d %H:%M:%S')"
+           git push --force
