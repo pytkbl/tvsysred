@@ -49,5 +49,5 @@ jobs:
         if: steps.git-check.outputs.changed == 'true'
         run: |
           git add rc.m3u
-          git commit -m " rc.m3u dosyası güncellendi - $(date +'%Y-%m-%d %H:%M:%S')"
+          git commit -m " Rc.m3u dosyası güncellendi - $(date +'%Y-%m-%d %H:%M:%S')"
           git push origin HEAD:main
