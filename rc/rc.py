@@ -24,10 +24,10 @@ class RecTVUrlFetcher:
             )
             main_url = response.json().get("entries", {}).get("api_url", "")
             base_domain = main_url.replace("/api/", "")
-            print(f"🟢 Güncel RecTV domain alındı: {base_domain}")
+            print(f"🟢 Güncel RcTV domain alındı: {base_domain}")
             return base_domain
         except Exception as e:
-            print("🔴 RecTV domain alınamadı!")
+            print("🔴 RcTV domain alınamadı!")
             print(f"Hata: {type(e).__name__} - {e}")
             return None
 
@@ -56,7 +56,7 @@ def get_all_channels(base_domain):
 
 def extract_m3u8_links(channels):
     playlist_lines = ['#EXTM3U']
-    priority_order = ["Spor", "Ulusal Haber", "Ulusal", "Sinema ve Dizi", "Çocuk & Eğitim", "Belgesel","Diğer", "Müzik"]
+    priority_order = ["Ulusal", "Ulusal Haber", "Spor", "Sinema ve Dizi", "Çocuk & Eğitim", "Belgesel", "Müzik", "Diğer"]
     grouped_channels = {}
 
     for channel in channels:
@@ -104,7 +104,7 @@ def save_to_file(new_lines, filename="rectv.m3u"):
     with open(filename, "w", encoding="utf-8") as f:
         f.write(content)
 
-    print(f"💾 M3U dosyası güncellendi: {filename}")
+    print(f"💾 Rc M3U dosyası güncellendi: {filename}")
 
 # ------------------------ 🔽 Eklenen Yardımcı Fonksiyonlar 🔽 ------------------------
 
