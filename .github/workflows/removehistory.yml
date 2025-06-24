@@ -1,4 +1,4 @@
-name: Clear Git History and Keep Current Files
+name: Kalıntıları Temizle
 
 on:
   workflow_dispatch:  # Manually trigger the workflow
