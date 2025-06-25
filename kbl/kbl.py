@@ -57,8 +57,6 @@ def get_canli_tv_m3u():
                 
                 group = categories[0].get('Name', 'Genel') if categories else 'Genel'
                 
-                if group == "Bilgilendirme":
-                    continue
                 
                 f.write(f'#EXTINF:-1 tvg-logo="{logo}" group-title="{group}",{name}\n')
                 f.write(f'{hls_url}\n')
