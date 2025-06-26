@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      KBL_BEAR_1: ${{ secrets.KBL_BEAR_1 }}
+      KBL_BEAR_2: ${{ secrets.KBL_BEAR_2 }}
     permissions:
       contents: write
     steps:
