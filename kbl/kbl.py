@@ -10,7 +10,6 @@ def get_canli_tv_m3u():
     """"""
     
     url = "https://core-api.kablowebtv.com/api/channels"
-    kblcozucu = os_getenv("KBL_BEAR_1")
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
         "Referer": "https://tvheryerde.com",
@@ -18,7 +17,7 @@ def get_canli_tv_m3u():
         "Cache-Control": "max-age=0",
         "Connection": "keep-alive",
         "Accept-Encoding": "gzip",
-        "Authorization": kblcozucu  # Güvenlik için normalde token burada gösterilmemeli
+        "Authorization": f"Bearer {os_getenv('KBL_BEAR_1')}"
     }
     
     try:
