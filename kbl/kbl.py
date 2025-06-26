@@ -17,7 +17,7 @@ def get_canli_tv_m3u():
         "Cache-Control": "max-age=0",
         "Connection": "keep-alive",
         "Accept-Encoding": "gzip",
-        "Authorization": f"Bearer {os_getenv('KBL_BEAR_1')}"
+        "Authorization": f"Bearer {os.getenv('KBL_BEAR_1')}"
     }
     
     try:
