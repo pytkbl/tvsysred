@@ -24,7 +24,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Betiği çalıştır
-        run: python vodden.py
+        run: python kblvod/vodden.py
 
       - name: m3u dosyasını kontrol et
         run: |
